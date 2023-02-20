@@ -1,5 +1,5 @@
 # 8_WEEK_SQL_STUDY_CHALLENGE
-# 8_WEEK_SQL_STUDY_CHALLENGE
+
 
                                          --Case Study #1: Danny's Diner
 
@@ -10,7 +10,7 @@
      SUM("price") as total_paid
      FROM sales as s
      JOIN menu as m on m."product_id"=s."product_id" 
-     GROUP BY "customer_id"
+     GROUP BY "customer_id";
 
 
 --2 How many days has each customer visited the restaurant?
@@ -18,7 +18,7 @@
      SELECT  "customer_id",
      COUNT(distinct"order_date") as visited_days_no
      FROM sales
-     GROUP BY "customer_id"
+     GROUP BY "customer_id";
 
 
 --3 What was the first item FROM the menu purchased by each customer?
@@ -31,7 +31,7 @@
      SELECT "customer_id",
      "product_name"
      FROM cte 
-     WHERE rnk = 1
+     WHERE rnk = 1;
 
 
 ---4 What is the most purchased item on the menu and how many times was it purchased by all customers?
@@ -42,7 +42,7 @@
      JOIN menu as m on m."product_id"=s."product_id"
      GROUP BY s."product_id","product_name"
      order by n0_purchased DESC
-     LIMIT 1
+     LIMIT 1;
 
 
 --5 Which item was the most popular for each customer?
@@ -56,7 +56,7 @@
      "product_name"
      FROM cte 
      WHERE rnk=1
-     GROUP BY "customer_id","product_name"
+     GROUP BY "customer_id","product_name";
 
 
 --6 Which item was purchased first by the customer after they became a member?
@@ -69,7 +69,7 @@
      SELECT "customer_id","product_name"
      FROM cte 
      WHERE rnk = 1
-     GROUP BY "customer_id","product_name"
+     GROUP BY "customer_id","product_name";
 
 
 --7 Which item was purchased just before the customer became a member?
@@ -83,7 +83,7 @@
      "product_name"
      FROM cte 
      WHERE rnk = 1
-     GROUP BY "customer_id","product_name"
+     GROUP BY "customer_id","product_name";
 
 
 --8 What is the total items and amount spent for each member before they became a member?
@@ -95,7 +95,7 @@
      JOIN menu as m on m."product_id"=s."product_id"
      JOIN members as mem on mem."customer_id"=s."customer_id"
      WHERE "order_date" < "JOIN_date"
-     GROUP BY  s."customer_id"
+     GROUP BY  s."customer_id";
 
 
 --9 If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
@@ -107,7 +107,7 @@
      END) as points
      FROM sales as s
      JOIN menu as m on m."product_id"=s."product_id"
-     GROUP BY "customer_id"
+     GROUP BY "customer_id";
 
 
 --10 In the first week after a customer JOINs the program (including their JOIN date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the END of January?
@@ -123,4 +123,4 @@
      JOIN menu as m on m."product_id"=s."product_id"
      JOIN members as mem on mem."customer_id"=s."customer_id"
      WHERE "order_date"<= '2021-01-31'
-     GROUP BY s."customer_id"
+     GROUP BY s."customer_id";
