@@ -24,7 +24,8 @@
 --2 What was the most commonly added extra?
 
       SELECT
-      ext.value as xtras_id ,count (xtras_id) as Num,"topping_name"       FROM customer_orders
+      ext.value as xtras_id ,count (xtras_id) as Num,"topping_name"       
+      FROM customer_orders
       LEFT JOIN lateral split_to_table("extras",',') as ext 
       JOIN pizza_toppings as pt on pt."topping_id"=xtras_id
       WHERE value <> 'null' and value <> ''
@@ -36,7 +37,8 @@
 --3 What was the most common exclusion?
 
       SELECT
-      exc.value as exclusive_id ,count (exclusive_id) as Num,"topping_name"       FROM customer_orders
+      exc.value as exclusive_id ,count (exclusive_id) as Num,"topping_name"      
+      FROM customer_orders
       LEFT JOIN lateral split_to_table("exclusions",',') as exc  
       JOIN pizza_toppings as pt on pt."topping_id"=exclusive_id
       WHERE value <> 'null' and value <> ''
@@ -88,11 +90,13 @@
       JOIN pizza_names as pn on pn."pizza_id"=co."pizza_id"
       ORDER BY co."order_id",Order_in_detail
 
-/*--5 Generate an alphabetically ordered comma separated ingredient list for each pizza order       FROM the customer_orders table and add a 2x in front of any relevant ingredients
+/*--5 Generate an alphabetically ordered comma separated ingredient list for each pizza order       
+FROM the customer_orders table and add a 2x in front of any relevant ingredients
 For example: "Meat Lovers: 2xBacon, Beef, ... , Salami"*/
 
       WITH top as (SELECT
-      co."order_id",co."pizza_id",pt."topping_id",pt."topping_name" as toppings        FROM customer_orders as co 
+      co."order_id",co."pizza_id",pt."topping_id",pt."topping_name" as toppings        
+      FROM customer_orders as co 
       JOIN pizza_recipes as pr on pr."pizza_id"=co."pizza_id"
       LEFT JOIN lateral split_to_table("toppings",',') as top
       JOIN pizza_toppings as pt on pt."topping_id"=top.value
