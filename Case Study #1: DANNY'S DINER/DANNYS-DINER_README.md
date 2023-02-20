@@ -22,7 +22,8 @@
 
 
 --3 What was the first item FROM the menu purchased by each customer?
-     WITH cte  as (SELECT
+
+      WITH cte  as (SELECT
      "customer_id",
      "product_name",
       rank() over( partition by  s."customer_id" order by s."order_date")as rnk 
