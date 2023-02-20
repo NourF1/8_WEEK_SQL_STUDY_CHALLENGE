@@ -1,3 +1,7 @@
+                                                                     --Case Study #2: PIZZA RUNNER A
+
+
+
 -- 1. How many pizzas were ordered?
      
      SELECT COUNT(order_id) AS pizzas_ordered 
