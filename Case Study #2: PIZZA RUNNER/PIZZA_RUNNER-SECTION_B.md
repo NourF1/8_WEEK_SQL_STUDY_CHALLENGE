@@ -1,4 +1,5 @@
-                                                                    Case Study #2: PIZZA RUNNER B
+                                                                 Case Study #2: PIZZA RUNNER
+                                                                B-RUNNER AND CUSTOMER EXPERIENCE
 
 
 --1 How many runners signed up for each 1 week period? (i.e. week starts 2021-01-01)
