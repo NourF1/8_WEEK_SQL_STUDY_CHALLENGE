@@ -1,5 +1,6 @@
-                                                                     --Case Study #2: PIZZA RUNNER A
-
+                                                             --Case Study #2: PIZZA RUNNER A
+                                                                    A-PIZZA METRICS
+                
 
 
 -- 1. How many pizzas were ordered?
